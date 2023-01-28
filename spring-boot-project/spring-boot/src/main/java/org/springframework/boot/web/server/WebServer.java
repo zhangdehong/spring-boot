@@ -28,6 +28,7 @@ package org.springframework.boot.web.server;
 public interface WebServer {
 
 	/**
+     * 启动webServer 如歌webServer已经启动，调用该方法不会有影响
 	 * Starts the web server. Calling this method on an already started server has no
 	 * effect.
 	 * @throws WebServerException if the server cannot be started
@@ -35,6 +36,7 @@ public interface WebServer {
 	void start() throws WebServerException;
 
 	/**
+     * 停止WebServer 如果webServer已经停止，调用改方法不会有影响
 	 * Stops the web server. Calling this method on an already stopped server has no
 	 * effect.
 	 * @throws WebServerException if the server cannot be stopped
@@ -42,12 +44,14 @@ public interface WebServer {
 	void stop() throws WebServerException;
 
 	/**
+     * 返回server监听的端口号
 	 * Return the port this server is listening on.
 	 * @return the port (or -1 if none)
 	 */
 	int getPort();
 
 	/**
+     *
 	 * Initiates a graceful shutdown of the web server. Handling of new requests is
 	 * prevented and the given {@code callback} is invoked at the end of the attempt. The
 	 * attempt can be explicitly ended by invoking {@link #stop}. The default

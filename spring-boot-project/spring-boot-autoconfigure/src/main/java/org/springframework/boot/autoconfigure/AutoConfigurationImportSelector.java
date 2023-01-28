@@ -93,6 +93,11 @@ public class AutoConfigurationImportSelector implements DeferredImportSelector, 
 
 	private ConfigurationClassFilter configurationClassFilter;
 
+    /**
+     * 导入的配置类通过SpringFactoriesLoader 获取
+     * @param annotationMetadata
+     * @return
+     */
 	@Override
 	public String[] selectImports(AnnotationMetadata annotationMetadata) {
 		if (!isEnabled(annotationMetadata)) {

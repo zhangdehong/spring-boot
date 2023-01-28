@@ -30,6 +30,7 @@ import java.util.Set;
 public interface ConfigurableWebServerFactory extends WebServerFactory, ErrorPageRegistry {
 
 	/**
+     * 设置webServer 要监听的端口 如果么有设置 默认使用8080 设置为-1 表示禁止自动启动(启动应用上下文，但是不监听任何端口)
 	 * Sets the port that the web server should listen on. If not specified port '8080'
 	 * will be used. Use port -1 to disable auto-start (i.e. start the web application
 	 * context but not have it listen to any port).
@@ -38,36 +39,42 @@ public interface ConfigurableWebServerFactory extends WebServerFactory, ErrorPag
 	void setPort(int port);
 
 	/**
+     * 设置要绑定的地址
 	 * Sets the specific network address that the server should bind to.
 	 * @param address the address to set (defaults to {@code null})
 	 */
 	void setAddress(InetAddress address);
 
 	/**
+     * 设置出现异常时要显示的错误页（error page）
 	 * Sets the error pages that will be used when handling exceptions.
 	 * @param errorPages the error pages
 	 */
 	void setErrorPages(Set<? extends ErrorPage> errorPages);
 
 	/**
+     * 设置ssl相关配置
 	 * Sets the SSL configuration that will be applied to the server's default connector.
 	 * @param ssl the SSL configuration
 	 */
 	void setSsl(Ssl ssl);
 
 	/**
+     * 设置获取ssl的SslStoreProvider
 	 * Sets a provider that will be used to obtain SSL stores.
 	 * @param sslStoreProvider the SSL store provider
 	 */
 	void setSslStoreProvider(SslStoreProvider sslStoreProvider);
 
 	/**
+     * 设置http2相关的配置
 	 * Sets the HTTP/2 configuration that will be applied to the server.
 	 * @param http2 the HTTP/2 configuration
 	 */
 	void setHttp2(Http2 http2);
 
 	/**
+     * 设置http compression
 	 * Sets the compression configuration that will be applied to the server's default
 	 * connector.
 	 * @param compression the compression configuration
@@ -75,6 +82,7 @@ public interface ConfigurableWebServerFactory extends WebServerFactory, ErrorPag
 	void setCompression(Compression compression);
 
 	/**
+     * 设置server header的值
 	 * Sets the server header value.
 	 * @param serverHeader the server header value
 	 */

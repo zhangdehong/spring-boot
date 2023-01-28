@@ -28,6 +28,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PropertiesLoaderUtils;
 
 /**
+ * 加载properties或xml文件
  * Strategy to load '.properties' files into a {@link PropertySource}.
  *
  * @author Dave Syer
@@ -39,6 +40,10 @@ public class PropertiesPropertySourceLoader implements PropertySourceLoader {
 
 	private static final String XML_FILE_EXTENSION = ".xml";
 
+    /**
+     * 支持properties 或者 xml
+     * @return
+     */
 	@Override
 	public String[] getFileExtensions() {
 		return new String[] { "properties", "xml" };

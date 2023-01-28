@@ -36,13 +36,21 @@ import org.springframework.core.type.AnnotatedTypeMetadata;
 @Order(Ordered.HIGHEST_PRECEDENCE + 20)
 class OnJavaCondition extends SpringBootCondition {
 
+    /**
+     * 根据JavaVersion 获取当前jdk的版本  javaVersion 是springBoot封装的一个类
+     * 内部根据某个类的某些方法是否存在来判断jdk版本
+     * 比如 Optional的empty方法存在 表示是jdk 1.8
+     * Optional的stream方法存在 表示这是jdk 9
+     */
 	private static final JavaVersion JVM_VERSION = JavaVersion.getJavaVersion();
 
 	@Override
 	public ConditionOutcome getMatchOutcome(ConditionContext context, AnnotatedTypeMetadata metadata) {
+        // 得到ConditionalOnJava java里的属性
 		Map<String, Object> attributes = metadata.getAnnotationAttributes(ConditionalOnJava.class.getName());
 		Range range = (Range) attributes.get("range");
 		JavaVersion version = (JavaVersion) attributes.get("value");
+        // 判断是否满足条件
 		return getMatchOutcome(range, JVM_VERSION, version);
 	}
 
@@ -55,6 +63,7 @@ class OnJavaCondition extends SpringBootCondition {
 	}
 
 	/**
+     * 判断Java版本是否满足条件
 	 * Determines if the {@code runningVersion} is within the specified range of versions.
 	 * @param runningVersion the current version.
 	 * @param range the range

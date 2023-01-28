@@ -27,6 +27,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.util.ClassUtils;
 
 /**
+ * 加载yaml或者yml文件
  * Strategy to load '.yml' (or '.yaml') files into a {@link PropertySource}.
  *
  * @author Dave Syer
@@ -36,6 +37,10 @@ import org.springframework.util.ClassUtils;
  */
 public class YamlPropertySourceLoader implements PropertySourceLoader {
 
+    /**
+     * 支持yaml或者yml
+     * @return
+     */
 	@Override
 	public String[] getFileExtensions() {
 		return new String[] { "yml", "yaml" };
